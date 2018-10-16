@@ -1,3 +1,12 @@
+################################################################################
+### Imports
+################################################################################
+
+import wordlist
+import enchant
+import re
+
+alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
 ################################################################################
 ### Obfusated code
@@ -25,7 +34,7 @@ def encrypt(a, debug = False):
     return c
 
 def decrypt_bf(debug = True):
-    alph = 'abcdefghijklmnopqrstuvwxyzI. '
+    alph = alphabet + 'I. '
     ciphertext = 'tsdmueyuvrxIedqqfmdqweIyaaxtiyzrujqezxqdawgotw'
     plaintext = ''
     i = 0
@@ -48,7 +57,24 @@ def decrypt_bf(debug = True):
 
     return plaintext
 
-# SECRET = gur.chmmyr.uhag.pbagvahrf.gur.lrne.vf.zpzkpvvv (ROT13 to avoid spoilers)
+''' Answer: gur.chmmyr.uhag.pbagvahrf.gur.lrne.vf.zpzkpvvv (ROT13 to avoid spoilers) '''
+
+################################################################################
+### Hangman
+################################################################################
+
+def hangman():
+    english_dict = enchant.Dict('en_GB')
+    our_alphabet = re.sub('[anordpwuyigt]', '', alphabet)
+    wordgen = wordlist.Generator(our_alphabet)
+    possible_words = list()
+    for poss in wordgen.generate_with_pattern('@@ig@t'):
+        if english_dict.check(poss):
+            possible_words.append(poss)
+    return possible_words
+
+''' Answer: urvtug. cbffvoyr jbeqf ner oyvtug, syvtug, fyvtug, naq urvtug.
+vs y jnf vapbeerpg gura pbhyq bayl or urvtug (ROT13 to avoid spoilers) '''
 
 ################################################################################
 ### Running
@@ -56,4 +82,4 @@ def decrypt_bf(debug = True):
 
 if __name__ == "__main__":
 
-    decrypt_bf()
+    print hangman()
