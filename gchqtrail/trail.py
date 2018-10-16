@@ -24,16 +24,6 @@ def encrypt(a, debug = False):
         i += 1                      # Increment loop counter
     return c
 
-'''
-Walkthrough with 'hello':
-
-x = 4
-y = 4
-z = 8
-c = 'i'
-
-'''
-
 def decrypt_bf(debug = True):
     alph = 'abcdefghijklmnopqrstuvwxyzI. '
     ciphertext = 'tsdmueyuvrxIedqqfmdqweIyaaxtiyzrujqezxqdawgotw'
@@ -57,6 +47,8 @@ def decrypt_bf(debug = True):
                 print "! Error: Failed"
 
     return plaintext
+
+# SECRET = gur.chmmyr.uhag.pbagvahrf.gur.lrne.vf.zpzkpvvv (ROT13 to avoid spoilers)
 
 ################################################################################
 ### Running
